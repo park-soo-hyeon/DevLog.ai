@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박수현 | 프론트엔드 개발자 포트폴리오</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter 폰트 (Tailwind 기본 폰트) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Inter 폰트 기본 적용 */
+        body {
+            font-family: 'Inter', 'Pretendard', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* 부드러운 스크롤 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-700/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold text-white">박수현 (Soohyun Park)</span>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About Me</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                    <a href="#project" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Project</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <div class="space-y-16 md:space-y-24">
+
+            <!-- 1. Hero Section -->
+            <section id="hero" class="text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    박수현
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto md:mx-0">
+                    React, TypeScript 및 AWS 클라우드 환경에 대한 이해를 바탕으로 AI 기술을 접목한 확장 가능한 웹 애플리케이션 개발에 주력하는 개발자입니다.
+                </p>
+                <div id="contact" class="mt-8 flex justify-center md:justify-start items-center gap-4">
+                    <a href="mailto:parksoo0206@naver.com" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-lg">
+                        <!-- Email Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Email
+                    </a>
+                    <a href="https://github.com/park-soo-hyeon" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-lg">
+                        <!-- GitHub Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                    </a>
+                </div>
+            </section>
+
+            <!-- 2. About Me Section -->
+            <section id="about">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-6">
+                    상세 소개 (About Me)
+                </h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        저는 비즈니스 문제를 기술로 해결하고 사용자에게 명확한 가치를 전달하는 과정에 매력을 느끼는 개발자입니다. 특히 React와 TypeScript를 활용하여, 유지보수가 용이하고 타입 안정성이 보장된(type-safe) 견고한 프론트엔드 아키텍처를 구축하는 것을 선호합니다. 선언적인 UI 구성과 컴포넌트 기반 개발 방식이 복잡한 애플리케이션의 논리를 명확하게 관리하고, 동료들과의 효율적인 협업을 가능하게 하는 핵심이라고 믿습니다.
+                    </p>
+                    <p>
+                        나아가, 현재의 웹 애플리케이션은 프론트엔드에만 머무르지 않는다고 생각합니다. 이에 AWS 클라우드 환경(S3, Lambda, EC2 등)에 대한 이해를 바탕으로, 백엔드 서비스와 유연하게 연동하고 확장 가능한(scalable) 시스템을 설계하는 데 깊은 관심을 두고 있습니다. 단순히 화면을 구현하는 것을 넘어, 인프라를 포함한 전체 서비스의 생명 주기를 이해하고 기여하는 개발자가 되는 것을 목표로 합니다.
+                    </p>
+                    <p>
+                        최근에는 이러한 기술 스택 위에 AI 기술을 접목하여 '지능형 웹 서비스'를 구축하는 데 주력하고 있습니다. 생성형 AI 모델 API를 연동하거나 머신러닝 기반의 추천 로직을 프론트엔드에서 효과적으로 시각화하는 프로젝트들을 통해, 사용자 경험(UX)을 한 단계 끌어올리는 역량을 키워왔습니다. 이번 포트폴리오의 프로젝트들은 이러한 저의 강점—안정적인 React/TS 코드, AWS 기반의 확장성, 그리고 AI를 활용한 비즈니스 가치 창출—을 종합적으로 보여주기 위해 구성되었습니다.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. Skills Section -->
+            <section id="skills">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-6">
+                    기술 스택 (Skills)
+                </h2>
+                <div class="space-y-6">
+                    <!-- 프론트엔드 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-indigo-400 mb-3">프론트엔드 (Frontend)</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-block bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm font-medium border border-indigo-700/50">JavaScript</span>
+                            <span class="inline-block bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm font-medium border border-indigo-700/50">TypeScript</span>
+                            <span class="inline-block bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm font-medium border border-indigo-700/50">React</span>
+                            <span class="inline-block bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full text-sm font-medium border border-indigo-700/50">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <!-- 백엔드 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-indigo-400 mb-3">백엔드 (Backend)</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">Node.js</span>
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">Spring</span>
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">MySQL</span>
+                        </div>
+                    </div>
+                    <!-- DevOps & Tools -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-indigo-400 mb-3">DevOps & Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">Git</span>
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">Docker</span>
+                            <span class="inline-block bg-gray-700/50 text-gray-300 px-3 py-1 rounded-full text-sm font-medium border border-gray-600/50">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Project Section -->
+            <section id="project">
+                <h2 class="text-3xl font-bold tracking-tight text-white mb-6">
+                    주요 프로젝트 (Project)
+                </h2>
+                
+                <!-- DevLog.ai Project Card -->
+                <div class="bg-gray-800/70 rounded-xl shadow-2xl overflow-hidden border border-gray-700/50">
+                    <div class="p-6 md:p-10">
+                        <h3 class="text-2xl font-bold text-white mb-2">
+                            개발자의 성장을 돕는 AI 글쓰기 파트너 (DevLog.ai)
+                        </h3>
+                        <p class="text-indigo-400 mb-6 font-medium">AI 기반 기술 블로그 자동화 툴</p>
+
+                        <!-- 문제 정의 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mt-6 mb-3">문제 정의</h4>
+                            <p class="text-gray-300">
+                                개발자들이 기술 블로그 등 '기록'의 중요성은 인지하고 있으나, 실제로는 '코딩할 시간도 부족'하고 '글쓰기 자체의 부담감'(어디서부터 시작할지 모르는 막막함, 구조화의 어려움)으로 인해 기록을 꾸준히 실천하지 못하는 문제가 있었습니다. 또한, 글의 완성도를 높이는 썸네일 등 '디자인 작업'에 대한 부담도 기록의 진입 장벽으로 작용했습니다. 이 프로젝트의 목표는 이러한 복잡한 기록 과정을 자동화하여 개발자의 기록 장벽을 낮추는 것이었습니다.
+                            </p>
+                        </div>
+
+                        <!-- 아키텍처/설계 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mt-6 mb-3">아키텍처/설계</h4>
+                            <p class="text-gray-300">
+                                문제 해결을 위해 'AI 기반 3단계 자동화 프로세스'를 핵심 전략으로 채택했습니다. 프론트엔드는 React와 TypeScript를 사용하여 개발자에게 친숙한 UI/UX를 구축하고 컴포넌트 기반으로 설계했습니다. 백엔드 및 AI 연동은 AWS Lambda와 API Gateway를 활용한 서버리스 아키텍처를 채택하여, 생성형 AI(텍스트 생성, 이미지 생성) API를 효율적으로 호출하고 관리하도록 설계했습니다.
+                            </p>
+                        </div>
+
+                        <!-- 핵심 기능 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mt-6 mb-3">핵심 기능</h4>
+                            <div class="space-y-4">
+                                <div class="bg-gray-700/50 p-4 rounded-lg border border-gray-600/50">
+                                    <h5 class="font-semibold text-indigo-300">AI 기반 3단계(초안-다듬기-발행) 글쓰기 자동화</h5>
+                                    <p class="text-gray-300 mt-1 text-sm">
+                                        사용자가 핵심 키워드나 코드 스니펫만 입력하면, 1단계(초안 생성)에서 생성형 AI가 기술 블로그의 기본 구조(서론, 본론, 결론)를 갖춘 초안을 자동 생성합니다. 2단계(다듬기)에서는 React 기반의 에디터에서 이 초안을 수정/보완하며, 3단계(발행)에서는 최종본이 완성됩니다. 이 과정을 통해 '어디서부터 시작할지 모르는' 막막함을 해결했습니다.
+                                    </p>
+                                </div>
+                                <div class="bg-gray-700/50 p-4 rounded-lg border border-gray-600/50">
+                                    <h5 class="font-semibold text-indigo-300">AI 기반 컨텍스트 인식 썸네일 자동 생성</h5>
+                                    <p class="text-gray-300 mt-1 text-sm">
+                                        개발자들이 부담을 느끼는 '디자인 작업'을 자동화하기 위해, AI가 작성된 글의 핵심 맥락을 분석하여 DALL-E 또는 Imagen 2와 같은 이미지 생성 API를 호출합니다. 이를 통해 글의 주제와 분위기에 맞는 썸네일 이미지를 자동으로 생성하여, 별도의 디자인 툴 사용 없이도 시각적 매력이 있는 게시물을 완성할 수 있도록 했습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 나의 역할 및 기여 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mt-6 mb-3">나의 역할 및 기여</h4>
+                            <ul class="list-disc list-outside pl-5 space-y-2 text-gray-300">
+                                <li>React/TypeScript 기반 프론트엔드 아키텍처 설계 및 핵심 UI(글쓰기 에디터, 3단계 자동화 UI) 개발</li>
+                                <li>생성형 AI(텍스트 생성/이미지 생성) API 연동 기획 및 AWS Lambda를 이용한 서버리스 API 로직 구현</li>
+<li>'AI 기반 3단계 자동화 프로세스'의 사용자 경험(UX) 설계 및 프로토타이핑</li>
+                                <li>프로젝트 아이디어 기획 및 경진대회 발표 자료 제작, 발표</li>
+                            </ul>
+                        </div>
+
+                        <!-- 회고 -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-white mt-6 mb-3">회고 (Learnings & Improvements)</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- 배운 점 -->
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-green-300 mb-2">배운 점</h5>
+                                    <p class="text-gray-300 text-sm">
+                                        생성형 AI API(텍스트/이미지)를 실제 서비스 플로우에 접목하는 과정을 경험하며, 프롬프트 엔지니어링의 중요성과 AI 응답을 효과적으로 처리하는 비동기 로직의 필요성을 깊이 이해했습니다. 또한, React 프론트엔드와 AWS Lambda 기반 서버리스 백엔드를 연동하며 풀스택 개발 역량을 강화할 수 있었습니다.
+                                    </p>
+                                </div>
+                                <!-- 개선점 -->
+                                <div class="bg-gray-700/50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-yellow-300 mb-2">개선점</h5>
+                                    <p class="text-gray-300 text-sm">
+                                        현재는 아이디어와 프로토타입 수준이지만, 향후 실제 사용자의 피드백을 받아 AI 모델을 파인튜닝(Fine-tuning)하여 '개발 기술 용어'에 더 최적화된 글을 생성하도록 고도화하고 싶습니다. 또한, Vercel AI SDK 등을 활용한 스트리밍 UI를 구현하여 AI 응답 대기 시간을 줄이는 방향으로 사용자 경험을 개선하고 싶습니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 md:mt-24 border-t border-gray-700/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500">
+            <p>&copy; 2024 박수현. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
