@@ -4,11 +4,14 @@ import ReactMarkdown from 'react-markdown';
 import './App.css';
 
 function App() {
-  // API Key를 환경 변수에서 자동으로 가져옵니다.
   const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
   
   const [mode, setMode] = useState('topic');
   const [input, setInput] = useState('');
+  
+  const [tone, setTone] = useState('friendly'); // 글 스타일
+  const [target, setTarget] = useState('beginner'); // 독자 대상
+
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
@@ -33,10 +36,24 @@ function App() {
         dangerouslyAllowBrowser: true 
       });
 
-      // 1. 텍스트 생성
+      let tonePrompt = "";
+      if (tone === 'friendly') tonePrompt = "친근하고 유머러스한 말투(이모지 많이 사용)";
+      else if (tone === 'professional') tonePrompt = "진지하고 전문적인 기술 문서 스타일";
+      else if (tone === 'simple') tonePrompt = "비유를 사용하여 아주 쉽게 설명하는 스타일";
+
+      let targetPrompt = "";
+      if (target === 'beginner') targetPrompt = "비전공자나 주니어 개발자도 이해하기 쉽게";
+      else if (target === 'senior') targetPrompt = "깊이 있는 기술적 원리를 포함하여 시니어 개발자 타겟으로";
+
       const prompt = mode === 'topic' 
-        ? `기술 블로그 주제: "${input}". 이 주제로 개발자 블로그 포스팅을 작성해줘. 서론, 본론, 결론, 예제 코드를 포함해서 마크다운 형식으로 깔끔하게.`
-        : `다음 코드를 분석해서 기술 블로그 글을 작성해줘. 코드의 기능, 원리, 장점을 설명해줘.\n\n코드:\n${input}`;
+        ? `기술 블로그 주제: "${input}". 
+           조건 1: ${tonePrompt}로 작성해줘.
+           조건 2: ${targetPrompt} 맞춰서 설명해줘.
+           조건 3: 서론, 본론, 결론, 예제 코드를 포함해서 마크다운 형식으로 구조화해줘.`
+        : `다음 코드를 분석해서 기술 블로그 글을 작성해줘. 
+           코드: \n${input}\n
+           조건 1: ${tonePrompt}로 작성해줘.
+           조건 2: ${targetPrompt} 설명해줘.`;
 
       const textResponse = await openai.chat.completions.create({
         model: "gpt-4o",
@@ -45,10 +62,9 @@ function App() {
       
       const blogContent = textResponse.choices[0].message.content;
 
-      // 2. 이미지 생성
       const imageResponse = await openai.images.generate({
         model: "dall-e-3",
-        prompt: `Minimalist tech blog thumbnail about ${input.slice(0, 30)}. flat design, pastel yellow and blue colors, vector art style.`,
+        prompt: `Minimalist tech blog thumbnail about ${input.slice(0, 30)}. flat design, pastel yellow and blue colors, vector art style, no text.`,
         n: 1,
         size: "1024x1024",
       });
@@ -63,6 +79,13 @@ function App() {
       setError('생성 중 오류가 발생했습니다. (API Quota 등을 확인하세요)');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCopy = () => {
+    if (result?.text) {
+      navigator.clipboard.writeText(result.text);
+      alert("클립보드에 복사되었습니다! 블로그에 붙여넣으세요. 🎉");
     }
   };
 
@@ -89,6 +112,24 @@ function App() {
           </button>
         </div>
 
+        <div className="options-grid">
+          <div className="option-group">
+            <label>글 스타일 (Tone)</label>
+            <select value={tone} onChange={(e) => setTone(e.target.value)}>
+              <option value="friendly">😊 친근한 Velog 스타일</option>
+              <option value="professional">🧐 진지한 기술 문서</option>
+              <option value="simple">👶 5살도 이해하는 쉬운 설명</option>
+            </select>
+          </div>
+          <div className="option-group">
+            <label>독자 대상 (Target)</label>
+            <select value={target} onChange={(e) => setTarget(e.target.value)}>
+              <option value="beginner">🌱 주니어/입문자</option>
+              <option value="senior">🌳 시니어/전문가</option>
+            </select>
+          </div>
+        </div>
+
         {mode === 'topic' ? (
           <input 
             className="main-input"
@@ -110,7 +151,7 @@ function App() {
           onClick={handleGenerate} 
           disabled={loading}
         >
-          {loading ? 'AI가 열심히 생성 중... ⏳' : '✨ 블로그 글 & 썸네일 생성하기'}
+          {loading ? 'AI가 열심히 글을 쓰고 그림을 그리는 중... 🎨' : '✨ 블로그 글 & 썸네일 생성하기'}
         </button>
 
         {error && <p className="error-msg">{error}</p>}
@@ -124,7 +165,10 @@ function App() {
             <p className="download-hint">*우클릭하여 저장하세요</p>
           </div>
           <div className="result-card wide">
-            <h3>📝 생성된 초안</h3>
+            <div className="result-header-row">
+              <h3>📝 생성된 초안</h3>
+              <button onClick={handleCopy} className="copy-btn">📋 복사하기</button>
+            </div>
             <div className="markdown-body">
               <ReactMarkdown>{result.text}</ReactMarkdown>
             </div>
