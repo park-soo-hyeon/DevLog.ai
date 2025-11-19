@@ -9,9 +9,10 @@ function App() {
   const [mode, setMode] = useState('topic');
   const [input, setInput] = useState('');
   
+  // 옵션 상태 관리
   const [tone, setTone] = useState('friendly'); 
   const [target, setTarget] = useState('beginner'); 
-  const [language, setLanguage] = useState('Korean'); // 기본값 한국어
+  const [language, setLanguage] = useState('Korean'); 
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -37,44 +38,62 @@ function App() {
         dangerouslyAllowBrowser: true 
       });
 
-      // 1. 옵션 프롬프트 설정
-      let tonePrompt = "";
-      if (tone === 'friendly') tonePrompt = "친근하고 유머러스한 말투(이모지 많이 사용)";
-      else if (tone === 'professional') tonePrompt = "진지하고 전문적인 기술 문서 스타일";
-      else if (tone === 'simple') tonePrompt = "비유를 사용하여 아주 쉽게 설명하는 스타일";
+      // 1. 옵션 텍스트 설정 (AI가 이해하기 쉬운 문장으로 변환)
+      let toneDesc = "";
+      if (tone === 'friendly') toneDesc = "친근하고 이모지를 적절히 섞은 부드러운 말투";
+      else if (tone === 'professional') toneDesc = "전문적이고 신뢰감 있는 기술 문서 스타일";
+      else if (tone === 'simple') toneDesc = "비유를 들어 아주 쉽게 설명하는 스타일";
 
-      let targetPrompt = "";
-      if (target === 'beginner') targetPrompt = "비전공자나 주니어 개발자도 이해하기 쉽게";
-      else if (target === 'senior') targetPrompt = "깊이 있는 기술적 원리를 포함하여 시니어 개발자 타겟으로";
+      let targetDesc = "";
+      if (target === 'beginner') targetDesc = "비전공자나 초보 개발자도 이해할 수 있게 기초부터 설명";
+      else if (target === 'senior') targetDesc = "핵심 원리와 기술적 깊이가 있는 시니어 개발자 타겟";
 
-      let langPrompt = "";
-      if (language === 'Korean') langPrompt = "Must write in Korean language (반드시 한국어로 작성해).";
-      else if (language === 'English') langPrompt = "Must write in English language.";
-      else if (language === 'Japanese') langPrompt = "Must write in Japanese language.";
+      // 2. 프롬프트 구성 (이전 방식처럼 명확하게 변경)
+      let systemMessage = "당신은 인기 있는 테크 블로거입니다. 유익하고 깔끔한 마크다운 문서를 작성합니다.";
+      let userPrompt = "";
 
-      // 2. 최종 프롬프트 조합
-      const prompt = mode === 'topic' 
-        ? `기술 블로그 주제: "${input}". 
-           조건 1: ${langPrompt}
-           조건 2: ${tonePrompt}로 작성해.
-           조건 3: ${targetPrompt} 맞춰서 설명해.
-           조건 4: 서론, 본론, 결론, 예제 코드를 포함해서 마크다운 형식으로 구조화해.`
-        : `다음 코드를 분석해서 기술 블로그 글을 작성해줘. 
-           코드: \n${input}\n
-           조건 1: ${langPrompt} (코드 주석도 해당 언어로 번역).
-           조건 2: ${tonePrompt}로 작성해.
-           조건 3: ${targetPrompt} 맞춰서 설명해.`;
+      if (mode === 'topic') {
+        userPrompt = `
+          주제: "${input}"
+          
+          위 주제로 기술 블로그 포스팅을 작성해줘.
+          
+          [필수 요구사항]
+          1. 언어: 반드시 **${language}** 로 작성할 것.
+          2. 독자: ${targetDesc}
+          3. 톤앤매너: ${toneDesc}
+          4. 구조: 서론, 본론, 결론, 예제 코드를 포함하여 마크다운으로 깔끔하게 정리.
+        `;
+      } else {
+        userPrompt = `
+          아래 코드를 분석해서 기술 블로그 글을 작성해줘.
+          
+          [코드]
+          ${input}
 
+          [필수 요구사항]
+          1. 언어: 반드시 **${language}** 로 작성할 것. (코드 내 주석도 해당 언어로 번역)
+          2. 독자: ${targetDesc}
+          3. 톤앤매너: ${toneDesc}
+          4. 내용: 코드의 기능, 작동 원리, 장점을 분석해서 설명.
+        `;
+      }
+
+      // 3. 텍스트 생성 요청
       const textResponse = await openai.chat.completions.create({
         model: "gpt-4o",
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+            { role: "system", content: systemMessage },
+            { role: "user", content: userPrompt }
+        ],
       });
       
       const blogContent = textResponse.choices[0].message.content;
 
+      // 4. 이미지 생성 요청
       const imageResponse = await openai.images.generate({
         model: "dall-e-3",
-        prompt: `Minimalist tech blog thumbnail about ${input.slice(0, 30)}. flat design, pastel yellow and blue colors, vector art style, no text.`,
+        prompt: `Minimalist tech blog thumbnail illustration about ${input.slice(0, 30)}. flat design, vector art style, pastel colors, no text.`,
         n: 1,
         size: "1024x1024",
       });
@@ -122,6 +141,7 @@ function App() {
           </button>
         </div>
 
+        {/* 옵션 선택 영역 */}
         <div className="options-grid">
           <div className="option-group">
             <label>글 스타일 (Tone)</label>
@@ -138,7 +158,6 @@ function App() {
               <option value="senior">🌳 시니어/전문가</option>
             </select>
           </div>
-          
           <div className="option-group">
             <label>출력 언어 (Language)</label>
             <select value={language} onChange={(e) => setLanguage(e.target.value)}>
