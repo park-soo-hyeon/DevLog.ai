@@ -9,8 +9,9 @@ function App() {
   const [mode, setMode] = useState('topic');
   const [input, setInput] = useState('');
   
-  const [tone, setTone] = useState('friendly'); // 글 스타일
-  const [target, setTarget] = useState('beginner'); // 독자 대상
+  const [tone, setTone] = useState('friendly'); 
+  const [target, setTarget] = useState('beginner'); 
+  const [language, setLanguage] = useState('Korean'); // 기본값 한국어
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -36,6 +37,7 @@ function App() {
         dangerouslyAllowBrowser: true 
       });
 
+      // 1. 옵션 프롬프트 설정
       let tonePrompt = "";
       if (tone === 'friendly') tonePrompt = "친근하고 유머러스한 말투(이모지 많이 사용)";
       else if (tone === 'professional') tonePrompt = "진지하고 전문적인 기술 문서 스타일";
@@ -45,15 +47,23 @@ function App() {
       if (target === 'beginner') targetPrompt = "비전공자나 주니어 개발자도 이해하기 쉽게";
       else if (target === 'senior') targetPrompt = "깊이 있는 기술적 원리를 포함하여 시니어 개발자 타겟으로";
 
+      let langPrompt = "";
+      if (language === 'Korean') langPrompt = "Must write in Korean language (반드시 한국어로 작성해).";
+      else if (language === 'English') langPrompt = "Must write in English language.";
+      else if (language === 'Japanese') langPrompt = "Must write in Japanese language.";
+
+      // 2. 최종 프롬프트 조합
       const prompt = mode === 'topic' 
         ? `기술 블로그 주제: "${input}". 
-           조건 1: ${tonePrompt}로 작성해줘.
-           조건 2: ${targetPrompt} 맞춰서 설명해줘.
-           조건 3: 서론, 본론, 결론, 예제 코드를 포함해서 마크다운 형식으로 구조화해줘.`
+           조건 1: ${langPrompt}
+           조건 2: ${tonePrompt}로 작성해.
+           조건 3: ${targetPrompt} 맞춰서 설명해.
+           조건 4: 서론, 본론, 결론, 예제 코드를 포함해서 마크다운 형식으로 구조화해.`
         : `다음 코드를 분석해서 기술 블로그 글을 작성해줘. 
            코드: \n${input}\n
-           조건 1: ${tonePrompt}로 작성해줘.
-           조건 2: ${targetPrompt} 설명해줘.`;
+           조건 1: ${langPrompt} (코드 주석도 해당 언어로 번역).
+           조건 2: ${tonePrompt}로 작성해.
+           조건 3: ${targetPrompt} 맞춰서 설명해.`;
 
       const textResponse = await openai.chat.completions.create({
         model: "gpt-4o",
@@ -116,9 +126,9 @@ function App() {
           <div className="option-group">
             <label>글 스타일 (Tone)</label>
             <select value={tone} onChange={(e) => setTone(e.target.value)}>
-              <option value="friendly">😊 친근한 Velog 스타일</option>
-              <option value="professional">🧐 진지한 기술 문서</option>
-              <option value="simple">👶 5살도 이해하는 쉬운 설명</option>
+              <option value="friendly">😊 친근한 스타일</option>
+              <option value="professional">🧐 전문적인 스타일</option>
+              <option value="simple">👶 쉬운 설명 스타일</option>
             </select>
           </div>
           <div className="option-group">
@@ -126,6 +136,15 @@ function App() {
             <select value={target} onChange={(e) => setTarget(e.target.value)}>
               <option value="beginner">🌱 주니어/입문자</option>
               <option value="senior">🌳 시니어/전문가</option>
+            </select>
+          </div>
+          
+          <div className="option-group">
+            <label>출력 언어 (Language)</label>
+            <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+              <option value="Korean">🇰🇷 한국어</option>
+              <option value="English">🇺🇸 English</option>
+              <option value="Japanese">🇯🇵 日本語</option>
             </select>
           </div>
         </div>
