@@ -16,7 +16,7 @@
             -webkit-font-smoothing: antialiased;
         }
         html { scroll-behavior: smooth; }
-
+        
         .text-gradient {
             background: linear-gradient(to right, #F97316, #EC4899); /* Orange to Pink */
             -webkit-background-clip: text;
@@ -121,7 +121,7 @@
                             <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">Node.js</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">Spring</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">MySQL</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">AWS </span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium">AWS Lambda</span>
                         </div>
                     </div>
                     <!-- Tools -->
@@ -144,23 +144,21 @@
                     Main Project
                 </h2>
 
-                <div class="p-8 border-b border-gray-100 bg-gray-50/50 sticky top-0 z-10">
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-2xl">
+                    <div class="p-8 border-b border-gray-100 bg-gray-50/50 sticky top-0 z-10">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-6">
-                            
                             <div class="flex-1">
                                 <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">DevLog.ai</h3>
                                 <p class="text-orange-500 font-medium mb-4">개발자의 성장을 돕는 AI 글쓰기 파트너</p>
-                                
                                 <div class="flex flex-wrap gap-2">
                                     <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded-full border border-blue-100">FE: React</span>
                                     <span class="px-3 py-1 bg-green-50 text-green-600 text-xs font-bold rounded-full border border-green-100">BE: Serverless</span>
                                 </div>
                             </div>
-                            
                             <div class="flex-shrink-0 flex items-center gap-5 bg-white p-5 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
                                 <div class="text-right hidden sm:block">
                                     <p class="text-sm text-gray-500 font-medium mb-1">지금 바로 사용해보세요!</p>
-                                    <a href="#" target="_blank" class="inline-flex items-center gap-2 text-lg font-bold text-blue-600 hover:underline hover:text-blue-700 transition-colors">
+                                    <a href="https://dev-log-ai.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-lg font-bold text-blue-600 hover:underline hover:text-blue-700 transition-colors">
                                         서비스 바로가기 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                     </a>
@@ -245,6 +243,7 @@
                                 프로젝트 성과 및 사용자 평가
                             </h4>
                             
+                            <!-- 25명 대상 설명 문구 -->
                             <div class="bg-orange-50 border border-orange-100 rounded-lg p-3 mb-8 flex items-center gap-2 text-sm text-gray-600">
                                 <span class="bg-orange-100 text-orange-600 px-2 py-0.5 rounded font-bold text-xs">INFO</span>
                                 <p>본 평가는 실제 서비스 사용자 <strong class="text-gray-800">25명</strong>을 대상으로 진행한 정량/정성 평가 결과입니다.</p>
