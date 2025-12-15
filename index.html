@@ -16,8 +16,7 @@
             -webkit-font-smoothing: antialiased;
         }
         html { scroll-behavior: smooth; }
-        
-        /* 텍스트 그라데이션 효과 (밝은 배경용: 오렌지-핑크-보라 계열로 화사하게) */
+
         .text-gradient {
             background: linear-gradient(to right, #F97316, #EC4899); /* Orange to Pink */
             -webkit-background-clip: text;
@@ -52,11 +51,12 @@
             <section id="hero" class="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
                 <div class="flex-1 text-center md:text-left">
                     <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
-                        <span class="text-gradient">비즈니스 가치</span>를 창출하는<br>
+                        <span class="text-gradient">안정적이고 확장 가능한</span><br>
+                        웹 서비스를 만드는<br>
                         개발자 박수현입니다.
                     </h1>
                     <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        React, TypeScript 및 AWS 클라우드 환경에 대한 이해를 바탕으로<br class="hidden md:block">
+                        React, TypeScript 및 AWS 클라우드 기술을 기반으로<br class="hidden md:block">
                         AI 기술을 접목한 <strong>확장 가능한 웹 애플리케이션</strong> 개발에 주력합니다.
                     </p>
                     <div class="flex justify-center md:justify-start gap-4">
@@ -68,10 +68,9 @@
                         </a>
                     </div>
                 </div>
-                <!-- 프로필 이미지 영역 (크기 줄임: w-64 h-64) -->
+                <!-- 프로필 이미지 영역 -->
                 <div class="w-64 h-64 relative flex-shrink-0">
                     <div class="absolute inset-0 bg-gradient-to-tr from-orange-200 to-pink-200 rounded-full blur-xl opacity-70 animate-pulse"></div>
-                    <!-- [경로 확인]: assets/images/profile.jpg -->
                     <img src="assets/images/profile.jpg" 
                          onerror="this.src='https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=Profile'" 
                          alt="박수현 프로필" 
@@ -87,13 +86,13 @@
                 </h2>
                 <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-lg leading-relaxed text-gray-600 space-y-4">
                     <p>
-                        저는 <strong class="text-orange-600 bg-orange-50 px-1">비즈니스 문제를 기술로 해결</strong>하고 사용자에게 명확한 가치를 전달하는 과정에 매력을 느끼는 개발자입니다. 특히 React와 TypeScript를 활용하여, 유지보수가 용이하고 타입 안정성이 보장된(type-safe) 견고한 프론트엔드 아키텍처를 구축하는 것을 선호합니다.
+                        저는 React와 TypeScript를 활용하여 <strong class="text-orange-600 bg-orange-50 px-1">유지보수가 용이하고 타입 안정성이 보장된(type-safe) 견고한 아키텍처</strong>를 구축하는 데 강점이 있는 개발자입니다. 사용자에게 안정적인 경험을 제공하기 위해 선언적인 코드 작성과 효율적인 컴포넌트 설계에 깊은 관심을 두고 있습니다.
                     </p>
                     <p>
-                        나아가, 현재의 웹 애플리케이션은 프론트엔드에만 머무르지 않는다고 생각합니다. 이에 AWS 클라우드 환경(S3, Lambda 등)에 대한 이해를 바탕으로, 백엔드 서비스와 유연하게 연동하고 확장 가능한(scalable) 시스템을 설계하는 데 깊은 관심을 두고 있습니다.
+                        단순한 화면 구현을 넘어, <strong class="text-orange-600 bg-orange-50 px-1">AWS 클라우드 환경</strong>에 대한 이해를 바탕으로 백엔드 서비스와 유연하게 연동되는 <strong>확장 가능한(Scalable) 시스템</strong>을 설계합니다. 전체 서비스의 흐름을 이해하고 인프라까지 고려하는 개발을 지향합니다.
                     </p>
                     <p>
-                        최근에는 <strong class="text-orange-600 bg-orange-50 px-1">'지능형 웹 서비스'</strong>를 구축하는 데 주력하고 있습니다. 생성형 AI 모델 API를 연동하거나 머신러닝 기반의 추천 로직을 프론트엔드에서 효과적으로 시각화하는 프로젝트들을 통해, 사용자 경험(UX)을 한 단계 끌어올리는 역량을 키워왔습니다.
+                        최근에는 생성형 AI 모델 API 연동 및 데이터 시각화를 통해 사용자 경험(UX)을 극대화하는 <strong class="text-orange-600 bg-orange-50 px-1">'지능형 웹 서비스'</strong> 구축에 주력하고 있습니다. 최신 기술을 빠르게 습득하여 실질적인 서비스로 구현해내는 것을 즐깁니다.
                     </p>
                 </div>
             </section>
@@ -153,25 +152,24 @@
                                 <p class="text-orange-500 font-medium">개발자의 성장을 돕는 AI 글쓰기 파트너</p>
                             </div>
                             
-                            <!-- [NEW] 프로젝트 접속 링크 & QR 코드 영역 -->
-                            <div class="flex items-center gap-4 bg-white p-3 rounded-xl border border-gray-200 shadow-sm">
+                            <!-- 프로젝트 접속 링크 & QR 코드 영역 -->
+                            <div class="flex items-center gap-5 bg-white p-5 rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
                                 <div class="text-right hidden sm:block">
-                                    <p class="text-xs text-gray-400 font-medium mb-1">지금 바로 사용해보세요!</p>
-                                    <a href="https://dev-log-ai.vercel.app/" target="_blank" class="inline-flex items-center gap-1 text-sm font-bold text-blue-600 hover:underline">
+                                    <p class="text-sm text-gray-500 font-medium mb-1">지금 바로 사용해보세요!</p>
+                                    <a href="https://dev-log-ai.vercel.app/" target="_blank" class="inline-flex items-center gap-2 text-lg font-bold text-blue-600 hover:underline hover:text-blue-700 transition-colors">
                                         서비스 바로가기 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                     </a>
                                 </div>
-                                <!-- QR 코드 이미지 Placeholder -->
-                                <div class="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                    <!-- [경로 확인]: assets/images/qr-code.png -->
+                                <!-- QR 코드 이미지 -->
+                                <div class="w-24 h-24 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
                                     <img src="assets/images/qr-code.png" 
-                                         onerror="this.src='https://via.placeholder.com/100x100?text=QR'" 
+                                         onerror="this.src='https://via.placeholder.com/150x150?text=QR'" 
                                          alt="프로젝트 QR" class="w-full h-full object-cover">
                                 </div>
                             </div>
                         </div>
-                        <div class="flex gap-2 mt-4">
+                        <div class="flex gap-2 mt-6">
                             <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded-full border border-blue-100">FE: React</span>
                             <span class="px-3 py-1 bg-green-50 text-green-600 text-xs font-bold rounded-full border border-green-100">BE: Serverless</span>
                         </div>
@@ -183,12 +181,10 @@
                         <div>
                             <h4 class="text-lg font-bold text-gray-800 mb-4 border-l-4 border-orange-500 pl-3">프로젝트 시연 영상</h4>
                             <div class="relative w-full rounded-xl overflow-hidden shadow-lg border border-gray-100 bg-gray-900 aspect-video group">
-                                <!-- [경로 확인]: assets/videos/demo.mp4 -->
                                 <video controls class="w-full h-full object-cover">
                                     <source src="assets/videos/demo.mp4" type="video/mp4">
                                     <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
                                         <p class="mb-2 text-xl">🎬</p>
-                                        <p>assets/videos 폴더에 demo.mp4 파일을 넣어주세요.</p>
                                     </div>
                                 </video>
                             </div>
@@ -234,7 +230,6 @@
                                 </div>
                                 <!-- 이미지 영역 -->
                                 <div class="rounded-xl overflow-hidden border border-gray-200 shadow-lg group bg-white">
-                                    <!-- [경로 확인]: assets/images/architecture.png -->
                                     <img src="assets/images/architecture.png" 
                                          onerror="this.src='https://via.placeholder.com/600x400/f3f4f6/9ca3af?text=Architecture+Diagram'"
                                          alt="시스템 아키텍처" 
@@ -245,11 +240,16 @@
 
                         <!-- 4. 성과 및 평가 -->
                         <div class="bg-slate-50 rounded-xl p-6 md:p-8 border border-gray-200">
-                            <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
                                 <span class="w-2 h-8 bg-gradient-to-b from-orange-400 to-pink-500 mr-3 rounded-sm"></span>
                                 프로젝트 성과 및 사용자 평가
                             </h4>
                             
+                            <div class="bg-orange-50 border border-orange-100 rounded-lg p-3 mb-8 flex items-center gap-2 text-sm text-gray-600">
+                                <span class="bg-orange-100 text-orange-600 px-2 py-0.5 rounded font-bold text-xs">INFO</span>
+                                <p>본 평가는 실제 서비스 사용자 <strong class="text-gray-800">25명</strong>을 대상으로 진행한 정량/정성 평가 결과입니다.</p>
+                            </div>
+
                             <!-- 정량 평가 그래프 -->
                             <div class="mb-10">
                                 <h5 class="text-sm font-semibold text-gray-500 mb-6 uppercase tracking-widest">User Satisfaction Metrics</h5>
